@@ -1,0 +1,2 @@
+sudo apt-get install -y patch
+sudo apt-get install -y sqlite-devel
