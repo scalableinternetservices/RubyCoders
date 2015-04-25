@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @student_application.Student %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student_application.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @student_application.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student_application.email_id %>
+</p>
+
+<p>
+  <strong>GPA:</strong>
+  <%= @student_application.gpa %>
+</p>
+
+<%= link_to 'Edit', edit_student_application_path(@student_application) %> |
+<%= link_to 'Back', student_applications_path %> |
+<%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' } %>

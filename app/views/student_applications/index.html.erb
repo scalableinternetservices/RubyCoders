@@ -1,0 +1,35 @@
+<!-- <p id="notice"><%= notice %></p>
+
+<h1>Listing Student Applications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Gpa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student_applications.each do |student_application| %>
+      <tr>
+        <td><%= student_application.Student %></td>
+        <td><%= student_application.name %></td>
+        <td><%= student_application.phone %></td>
+        <td><%= student_application.email_id %></td>
+        <td><%= student_application.gpa %></td>
+        <td><%= link_to 'Show', student_application %></td>
+        <td><%= link_to 'Edit', edit_student_application_path(student_application) %></td>
+        <td><%= link_to 'Destroy', student_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br> 
+
+<%= link_to 'New Student application', new_student_application_path %> -->
