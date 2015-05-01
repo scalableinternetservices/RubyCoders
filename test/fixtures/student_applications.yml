@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Student_id:
-  name: Shraddha
-  phone: 3102957521
-  email_id: shraddha@ucla.edu
+  student_id: 10
+  name: Shrenik
+  phone: 1234567890
+  email_id: shrrenik@shrenik.com
   gpa: 3.0
 
 two:
-  Student_id:
-  name: Sayali
-  phone: 1234567890
-  email_id: sayali@ucla.edu
-  gpa: 3.8
+  student_id: 11
+  name: Hetal
+  phone: 9878979870
+  email_id: het@ucla.edu
+  gpa: 3.2
+
+three:
+  student_id: 12
+  name: Tara
+  phone: 1233211231
+  email_id: tara@ucla.edu
+  gpa: 3.2

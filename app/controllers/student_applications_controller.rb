@@ -1,6 +1,6 @@
 class StudentApplicationsController < ApplicationController
   before_action :set_student_application, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_student!
   # GET /student_applications
   # GET /student_applications.json
   def index
@@ -14,7 +14,9 @@ class StudentApplicationsController < ApplicationController
 
   # GET /student_applications/new
   def new
-    @student_application = StudentApplication.new
+    #@student_application = StudentApplication.new
+    #@profile = current_user.build_profile(params[:id])
+      @student_application = current_student.build_student_application
   end
 
   # GET /student_applications/1/edit
@@ -27,7 +29,9 @@ class StudentApplicationsController < ApplicationController
   # POST /student_applications
   # POST /student_applications.json
   def create
-    @student_application = StudentApplication.new(student_application_params)
+    #@student_application = StudentApplication.new(student_application_params)
+    #@new_student = Student.find(params[:id])
+    @student_application = current_student.create_student_application(student_application_params)
 
     respond_to do |format|
       if @student_application.save
@@ -72,6 +76,16 @@ class StudentApplicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_application_params
-      params.require(:student_application).permit(:Student_id, :name, :phone, :email_id, :gpa)
+      params.require(:student_application).permit(:student_id, :name, :phone, :email_id, :gpa)
     end
+
+    # check if an application already exists for current_student
+    def check_application_existence
+      if StudentApplication.exists?(:student_id => current_student.id)
+        @no_appln = false
+      else
+        @no_appln = true
+      end
+    end
+    helper_method :check_application_existence
 end

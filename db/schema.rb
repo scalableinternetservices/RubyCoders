@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425050827) do
+ActiveRecord::Schema.define(version: 20150501090044) do
 
   create_table "student_applications", force: :cascade do |t|
-    t.integer  "Student_id"
     t.string   "name"
     t.string   "phone"
     t.string   "email_id"
     t.decimal  "gpa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "student_id"
   end
 
-  add_index "student_applications", ["Student_id"], name: "index_student_applications_on_Student_id"
+  add_index "student_applications", ["student_id"], name: "index_student_applications_on_student_id", unique: true
 
   create_table "students", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
