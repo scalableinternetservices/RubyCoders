@@ -1,0 +1,44 @@
+<div class = "page-header"><h3>Sign in</h3></div>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<div class="panel panel-primary">
+  <div class = "panel-body">
+    <table class = "table">
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :email %></strong></td>
+          <td><%= f.email_field :email, autofocus: true %></td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :password %></strong></td>
+          <td><%= f.password_field :password, autocomplete: "off" %>
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+            <% end -%>
+          </td>
+        </div>
+      </tr>
+
+      <tr>
+        <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <td><%= f.check_box :remember_me %>
+            <%= f.label :remember_me %></td>
+            <td></td>
+          </div>
+        </tr>
+        <% end -%>
+      </table>
+    </div>
+  </div>
+  <center><div class="actions">
+    <%= f.submit "Sign in" %>
+  </div></center>
+  <% end %>
+
+  <!-- <%= render "devise/shared/links" %> -->

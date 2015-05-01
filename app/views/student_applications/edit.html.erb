@@ -1,6 +1,10 @@
-<h1>Editing Student Application</h1>
+<div class = "page-header"><h3>Editing Student Application</h3></div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @student_application %> |
-<%= link_to 'Back', student_applications_path %>
+<div class = "btn-group" role="group">
+  <%= link_to 'Show', @student_application, class:"btn btn-default" %> 
+  <%= link_to 'Back', student_applications_path, class:"btn btn-default" %> 
+</div>
+
+

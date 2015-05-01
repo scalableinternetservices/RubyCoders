@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RubyCoders</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>UCLA</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if student_signed_in? %>
-	<li><%= link_to '<button type="button">New Application</button>'.html_safe, new_student_application_path %></li>
-	<ul>
-		<li><%= link_to 'Account Settings', edit_student_registration_path %></li>
-		<li><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %></li>
-	</ul>
-	<% else %>
 
-	<ul>
-		<li><%= link_to 'Sign Up', new_student_registration_path %></li>
-		<li><%= link_to 'Sign In', new_student_session_path %></li>
-	</ul>
-	<% end %>
-	<%= yield %>
+	<header class="navbar navbar-default" role="navigation">
+		<div class = "navbar-inner">
+			<div class="container">
+				<div id = "logo" class = "navbar-brand"><%= link_to 'UCLA', root_path %></div>
 
-</body>
-</html>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<% if student_signed_in? %>
+					<ul class="nav navbar-nav navbar-right">
+						<li class = "active"><%= link_to 'New Application', new_student_application_path %><span class="sr-only">(current)</span></li>
+						<li class="active"><%= link_to 'Account Settings', edit_student_registration_path %><span class="sr-only">(current)</span></li>
+						<li class="active"><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %><span class="sr-only">(current)</span></li>
+					</ul>
+
+					<% else %>
+
+					<ul class="nav navbar-nav pull-right">
+						<li class="active"><%= link_to 'Sign Up', new_student_registration_path %><span class="sr-only">(current)</span></li>
+						<li class="active"><%= link_to 'Sign In', new_student_session_path %></li><span class="sr-only">(current)</span></li>
+					</ul>
+					<% end %>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</header>
+
+		<div id = "container" class = "col-md-9 center-block">
+			<%= yield %>
+		</div>
+
+	</body>
+	</html>
+

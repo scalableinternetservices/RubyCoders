@@ -1,37 +1,67 @@
-<%= form_for(@student_application) do |f| %>
-  <% if @student_application.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student_application.errors.count, "error") %> prohibited this student_application from being saved:</h2>
+<form>
 
-      <ul>
+  <div><%= form_for(@student_application) do |f| %></div>
+  <% if @student_application.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@student_application.errors.count, "error") %> prohibited this student_application from being saved:</h3>
+
+    <ul>
       <% @student_application.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
- <!-- <div class="field">
-    <%= f.label :Student_id %><br>
-    <%= f.text_field :Student_id %>
-  </div> -->
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="panel panel-primary">
+    <div class = "panel-body">
+      <table class = "table">
+
+        <tr>
+          <div class="field">
+            <td><strong><%= f.label :name %></strong></td>
+            <td><%= f.text_field :name %></td>
+          </div>
+        </tr>
+
+        <tr>
+         <div class="field">
+          <td><strong><%= f.label :phone %></strong></td>
+          <td><%= f.text_field :phone %></td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :email_id %></strong></td>
+          <td><%= f.text_field :email_id %></td>
+        </div>
+      </tr>
+
+      <tr>
+       <div class="field">
+        <td><strong><%= f.label :gpa %></strong></td>
+        <td><%= f.text_field :gpa %>
+        </div>
+      </tr>
+
+    </table>
   </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :email_id %><br>
-    <%= f.text_field :email_id %>
-  </div>
-  <div class="field">
-    <%= f.label :gpa %><br>
-    <%= f.text_field :gpa %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+
+<center><div class="actions">
+  <%= f.submit %>
+</div></center>
+
+<%end%>
+
+</form> 
+
+
+
+
+
+
+
+
+
