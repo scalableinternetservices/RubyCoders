@@ -1,0 +1,23 @@
+<h5>File starts here</h5>
+<h5>app/views/welcome/index.html.erb</h5>
+<h1>Welcome to UCLA , Apply by clciking on Apply Here</h1>
+
+<% if student_signed_in? %>
+  <% if no_application %>
+  <!--  If student is logged in and have not created an application -->
+	<li><%= link_to '<button type="button">New Application</button>'.html_safe, new_student_application_path %></li>
+	<ul>
+    <li><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %></li>
+	</ul>
+  <% else %>
+  <!--  If student is logged in and already has an application -->
+
+  <li><%= link_to 'Retrieve Application', redirecting_for_show_path(@student_application) %></li>
+  <% end %>
+<% else %>
+
+	<ul>
+    <li><%= link_to '<button type="button">Apply Here</button>'.html_safe, new_student_session_path %></li>
+    <li><%= link_to '<button type="button">Continue With Your Application </button>'.html_safe, new_student_session_path %></li>
+	</ul>
+<% end %>

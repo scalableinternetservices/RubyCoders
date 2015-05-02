@@ -7,27 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<% if student_signed_in? %>
-  <% if check_application_existence %>
-	<li><%= link_to '<button type="button">New Application</button>'.html_safe, new_student_application_path %></li>
-	<ul>
-
-		<li><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %></li>
-	</ul>
-  <% else %>
-  <ul>
-  
-    <li><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %></li>
-  </ul>
-  <% end %>
-	<% else %>
-
-	<ul>
-		<li><%= link_to 'Sign Up', new_student_registration_path %></li>
-		<li><%= link_to 'Sign In', new_student_session_path %></li>
-	</ul>
-	<% end %>
+<h6> application.html.erb </h6>
 	<%= yield %>
 
 </body>

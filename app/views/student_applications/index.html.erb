@@ -1,4 +1,4 @@
-<!-- <p id="notice"><%= notice %></p>
+ <p id="notice"><%= notice %></p>
 
 <h1>Listing Student Applications</h1>
 
@@ -17,7 +17,7 @@
   <tbody>
     <% @student_applications.each do |student_application| %>
       <tr>
-        <td><%= student_application.Student %></td>
+        <td><%= student_application.student_id %></td>
         <td><%= student_application.name %></td>
         <td><%= student_application.phone %></td>
         <td><%= student_application.email_id %></td>
@@ -30,6 +30,6 @@
   </tbody>
 </table>
 
-<br> 
+<br>
 
-<%= link_to 'New Student application', new_student_application_path %> -->
+<%= link_to 'New Student application', new_student_application_path %>

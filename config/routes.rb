@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'welcome/index'
+
   resources :student_applications do
     resources :student
   end
 
+  resources :welcome
+
   devise_for :students
 
-  root to: "student_applications#index"
-
+  #root to: "student_applications#index"
+  root to: "welcome#index"
   get '/check_application_existence' => 'student_applications#check_application_existence', :as => 'mcheck_application_existence'
-
+  get '/no_application' => 'welcome#no_application', :as => 'no_application_exists'
+  get '/redirecting_show' => 'welcome#redirecting_show', :as => 'redirecting_for_show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

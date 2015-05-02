@@ -2,7 +2,7 @@
 
 <p>
   <strong>Student:</strong>
-  <%= @student_application.Student %>
+  <%= @student_application.student_id %>
 </p>
 
 <p>
@@ -26,5 +26,7 @@
 </p>
 
 <%= link_to 'Edit', edit_student_application_path(@student_application) %> |
-<%= link_to 'Back', student_applications_path %> |
-<%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' } %>
+<!-- <%= link_to 'Back', student_application_path %> | -->
+<%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' } %> |
+
+<%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %>
