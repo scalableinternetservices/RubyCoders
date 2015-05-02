@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :student_applications
+  resources :student_applications do
+    resources :student
+  end
 
   devise_for :students
 
   root to: "student_applications#index"
+
+  get '/check_application_existence' => 'student_applications#check_application_existence', :as => 'mcheck_application_existence'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
