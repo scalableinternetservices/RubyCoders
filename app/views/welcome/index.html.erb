@@ -1,6 +1,5 @@
-<h5>File starts here</h5>
-<h5>app/views/welcome/index.html.erb</h5>
-<h1>Welcome to UCLA , Apply by clciking on Apply Here</h1>
+
+<h1>Welcome to the University , Apply by clciking on Apply Here</h1>
 
 <% if student_signed_in? %>
   <% if no_application %>
@@ -12,12 +11,12 @@
   <% else %>
   <!--  If student is logged in and already has an application -->
 
-  <li><%= link_to 'Retrieve Application', redirecting_for_show_path(@student_application) %></li>
+  <li><%= link_to 'Retrieve Application', redirecting_for_show_path(@student_application)%></li>
   <% end %>
 <% else %>
 
 	<ul>
-    <li><%= link_to '<button type="button">Apply Here</button>'.html_safe, new_student_session_path %></li>
+    <li><%= link_to '<button type="button">Apply Here</button>'.html_safe, new_student_registration_path %></li>
     <li><%= link_to '<button type="button">Continue With Your Application </button>'.html_safe, new_student_session_path %></li>
 	</ul>
 <% end %>

@@ -3,4 +3,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @student_application %> |
-<%= link_to 'Back', welcome_index_path %>
+<%= link_to 'Back', welcome_index_path %> |
+<li><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %></li>
