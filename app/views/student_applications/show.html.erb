@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% if student_signed_in? %>
 <p>
   <strong>Student:</strong>
   <%= @student_application.student_id %>
@@ -30,3 +30,6 @@
 <%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' } %> |
 
 <%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %>
+<% else %>
+  <li><%= link_to '<button type="button">Student Login</button>'.html_safe, new_student_session_path %></li>
+<% end %>

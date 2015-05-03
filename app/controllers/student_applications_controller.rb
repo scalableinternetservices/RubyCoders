@@ -17,7 +17,9 @@ class StudentApplicationsController < ApplicationController
   def new
     #@student_application = StudentApplication.new
     #@profile = current_user.build_profile(params[:id])
-      @student_application = current_student.build_student_application
+      if student_signed_in?
+        @student_application = current_student.build_student_application
+      end
   end
 
   # GET /student_applications/1/edit
