@@ -1,6 +1,7 @@
 class StudentApplicationsController < ApplicationController
   before_action :set_student_application, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_student!
+  # Removing the next line because if not removed it always redirects to the student login page in case of reviewer too
+  #before_action :authenticate_student!
   # GET /student_applications
   # GET /student_applications.json
   def index

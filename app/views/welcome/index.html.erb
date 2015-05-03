@@ -12,11 +12,20 @@
   <!--  If student is logged in and already has an application -->
 
   <li><%= link_to 'Retrieve Application', redirecting_for_show_path(@student_application)%></li>
+  <li><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %></li>
   <% end %>
+<% elsif reviewer_signed_in? %>
+    <ul>
+      <li> Its me the reviewer </li>
+      <br />
+      <li><%= link_to 'Show All Applications ', student_applications_path, :method => :get, :action => :index %></li>
+      <li><%= link_to 'Reviewer Sign Out', destroy_reviewer_session_path, :method => :delete %></li>
+    </ul>
 <% else %>
 
 	<ul>
     <li><%= link_to '<button type="button">Apply Here</button>'.html_safe, new_student_registration_path %></li>
     <li><%= link_to '<button type="button">Continue With Your Application </button>'.html_safe, new_student_session_path %></li>
+    <li><%= link_to '<button type="button">Review Applications </button>'.html_safe, new_reviewer_session_path %></li>
 	</ul>
 <% end %>

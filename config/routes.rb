@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
+  devise_for :reviewers
   get 'welcome/index'
 
-  resources :student_applications do
-    resources :student
-  end
-
-
+  resources :student_applications
+  resources :student
   resources :welcome
+  resources :reviewer
 
   devise_for :students
 
