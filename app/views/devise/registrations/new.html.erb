@@ -1,0 +1,41 @@
+<div class = "page-header"><h3>Sign up</h3></div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= devise_error_messages! %>
+
+<div class="panel panel-primary">
+  <div class = "panel-body">
+    <table class = "table">
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :email %></strong></td>
+          <td><%= f.email_field :email, autofocus: true %></td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :password %></strong></td>
+          <td><%= f.password_field :password, autocomplete: "off" %>
+          <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em></td>
+          <% end %>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :password_confirmation %><br /></strong></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
+        </div>
+      </tr>
+    </table>
+  </div>
+</div>
+<center><div class="actions">
+  <%= f.submit "Sign up" %>
+</div></center>
+<% end %>
+
+<!--<%= render "devise/shared/links" %>-->

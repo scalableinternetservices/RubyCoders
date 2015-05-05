@@ -2,7 +2,7 @@
 <% if reviewer_signed_in? %>
 <h1>Listing Student Applications</h1>
 
-<table>
+<table class = "table">
   <thead>
     <tr>
       <th>Student</th>
@@ -29,10 +29,9 @@
     <% end %>
   </tbody>
 </table>
+<!--
 <% else %>
-<ul>
   <h2>Reviewer Zone - Student is not authorized to view this</h2>
-<li><%= link_to '<button type="button">Review Applications </button>'.html_safe, new_reviewer_session_path %></li>
-</ul>
+    <%= link_to 'Review Applications', new_reviewer_session_path, class:"btn btn-default" %>
 <% end %>
-<br>
+<br> -->

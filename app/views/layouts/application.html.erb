@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RubyCoders</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>RubyCoders</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
-<h6> **** UNIVERSITY HOME **** </h6>
+	<header class="navbar navbar-inverse" role="navigation">
+		<div class = "navbar-inner">
+			<div class="container">
+				<div id = "logo" class = "navbar-brand"><%= link_to 'UCLA', root_path %></div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<% if student_signed_in? %>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete%></li>
+					</ul>
+
+					<% else %>
+
+					<ul class="nav navbar-nav pull-right">
+						<li class="active"><%= link_to 'Sign Up', new_student_registration_path %></li>
+						<li class="active"><%= link_to 'Sign In', new_student_session_path %></li>
+					</ul>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class ="panel-footer">
+		<nav>
+			<small>
+				<%= link_to "About",   '#' %>
+				<%= link_to "Contact", '#' %>
+			</small>
+		</nav>
+	</div>
+	<!--<h6> **** UNIVERSITY HOME **** </h6>-->
 	<%= yield %>
 
 </body>

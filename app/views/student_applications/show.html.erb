@@ -1,35 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class = "page-header"><h3>Student Application</h3></div>
+
+
+<div class="panel panel-primary">
+  <!--<div class="panel-title"><strong>Student Application<strong></div>-->
+  <div class = "panel-body">
+    <table class = "table">
 <% if student_signed_in? %>
-<p>
-  <strong>Student:</strong>
-  <%= @student_application.student_id %>
-</p>
+<tr>
+  <td><strong>Name:</strong></td>
+  <td><%= @student_application.name %></td>
+</tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @student_application.name %>
-</p>
+<tr>
+  <td><strong>Phone:</strong></td>
+  <td><%= @student_application.phone %></td>
+</tr>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @student_application.phone %>
-</p>
+<tr>
+  <td><strong>Email:</strong></td>
+  <td><%= @student_application.email_id %></td>
+</tr>
 
-<p>
-  <strong>Email:</strong>
-  <%= @student_application.email_id %>
-</p>
+<tr>
+  <td><strong>GPA:</strong></td>
+  <td><%= @student_application.gpa %></td>
+</tr>
 
-<p>
-  <strong>GPA:</strong>
-  <%= @student_application.gpa %>
-</p>
+</table>
+</div>
+</div>
 
-<%= link_to 'Edit', edit_student_application_path(@student_application) %> |
-<!-- <%= link_to 'Back', student_application_path %> | -->
-<%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<div class = "btn-group" role="group">
+<%= link_to 'Edit', edit_student_application_path(@student_application), class:"btn btn-default" %> 
+<%= link_to 'Back', welcome_index_path, class:"btn btn-default" %>
+<%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-default" %> 
+</div>
 
-<%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %>
-<% else %>
-  <li><%= link_to '<button type="button">Student Login</button>'.html_safe, new_student_session_path %></li>
+<!--<% else %>
+  <li><%= link_to '<button type="button">Student Login</button>'.html_safe, new_student_session_path %></li> -->
 <% end %>

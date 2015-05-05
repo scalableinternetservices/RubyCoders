@@ -1,12 +1,13 @@
-<h1>Editing Student Application</h1>
+
+<div class = "page-header"><h3>Editing Student Application</h3></div>
 
 <% if student_signed_in? %>
 <%= render 'form' %>
 
-<%= link_to 'Show', @student_application %> |
-<%= link_to 'Back', welcome_index_path %> |
-<li><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %></li>
+<div class = "btn-group" role="group"> 
+	<%= link_to 'Show', @student_application, class:"btn btn-default" %> 
+	<%= link_to 'Back', welcome_index_path, class:"btn btn-default" %> 
+</div>
 
-<% else %>
-<li><%= link_to '<button type="button">Student Login</button>'.html_safe, new_student_session_path %></li>
+<!--<li><%= link_to '<button type="button">Student Login</button>'.html_safe, new_student_session_path %></li>-->
 <% end %>
