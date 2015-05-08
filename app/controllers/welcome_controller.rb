@@ -16,4 +16,5 @@ class WelcomeController < ApplicationController
 
   end
   helper_method :redirecting_show
+
 end
