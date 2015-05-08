@@ -5,7 +5,7 @@
   <!--<div class="panel-title"><strong>Student Application<strong></div>-->
   <div class = "panel-body">
     <table class = "table">
-<% if student_signed_in? %>
+<% if student_signed_in? || reviewer_signed_in? %>
 <tr>
   <td><strong>Name:</strong></td>
   <td><%= @student_application.name %></td>
