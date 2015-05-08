@@ -26,14 +26,29 @@
   <td><%= @student_application.gpa %></td>
 </tr>
 
+<tr>
+  <td><strong>Address:</strong></td>
+  <td><%= @student_application.address %></td>
+</tr>
+
+<tr>
+  <td><strong>Latitude:</strong></td>
+  <td><%= @student_application.latitude %></td>
+</tr>
+
+<tr>
+  <td><strong>Longitude:</strong></td>
+  <td><%= @student_application.longitude %></td>
+</tr>
+
 </table>
 </div>
 </div>
 
 <div class = "btn-group" role="group">
-<%= link_to 'Edit', edit_student_application_path(@student_application), class:"btn btn-default" %> 
+<%= link_to 'Edit', edit_student_application_path(@student_application), class:"btn btn-default" %>
 <%= link_to 'Back', welcome_index_path, class:"btn btn-default" %>
-<%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-default" %> 
+<%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-default" %>
 </div>
 
 <!--<% else %>

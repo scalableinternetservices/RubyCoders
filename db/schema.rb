@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502190304) do
+ActiveRecord::Schema.define(version: 20150508160452) do
 
   create_table "reviewers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 20150502190304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "student_id"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "student_applications", ["student_id"], name: "index_student_applications_on_student_id", unique: true

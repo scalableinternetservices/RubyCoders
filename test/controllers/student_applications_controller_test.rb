@@ -21,7 +21,7 @@ class StudentApplicationsControllerTest < ActionController::TestCase
   test "should create student_application" do
     sign_in students(:user1)
     assert_difference('StudentApplication.count') do
-      post :create, student_application: { student_id: @student_application.student_id, email_id: 'abcd@ucla.edu', gpa: 3.0, name: 'abcd', phone: 9802957521 }
+      post :create, student_application: { student_id: @student_application.student_id, email_id: 'abcd@ucla.edu', gpa: 3.0, name: 'abcd', phone: 9802957521, address:'Santa Clara, CA' }
     end
 
     assert_redirected_to student_application_path(assigns(:student_application))
