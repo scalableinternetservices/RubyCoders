@@ -9,15 +9,6 @@ one:
   address: Statue of Liberty, NY
   latitude: 40.689249
   longitude: -74.0445
-  resume_file_name : resume.pdf
-  resume_content_type: application/pdf
-  resume_file_size: 1234
-  resume_updated_at: 2015-05-12 04:32:42
-  sop_file_name : sop.pdf
-  sop_content_type: application/pdf
-  sop_file_size: 1234
-  sop_updated_at: 2015-05-12 04:32:42
-  lor_file_name : lor.pdf
-  lor_content_type: application/pdf
-  lor_file_size: 1221
-  sop_updated_at: 2015-05-12 04:32:42
+  resume_file_name: resume.pdf
+  sop_file_name: sop.pdf
+  lor_file_name: lor.pdf
