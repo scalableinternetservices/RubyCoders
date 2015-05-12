@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508160452) do
+ActiveRecord::Schema.define(version: 20150512041959) do
 
   create_table "reviewers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -36,12 +36,24 @@ ActiveRecord::Schema.define(version: 20150508160452) do
     t.string   "phone"
     t.string   "email_id"
     t.decimal  "gpa"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "student_id"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "resume_file_name"
+    t.string   "resume_content_type"
+    t.integer  "resume_file_size"
+    t.datetime "resume_updated_at"
+    t.string   "sop_file_name"
+    t.string   "sop_content_type"
+    t.integer  "sop_file_size"
+    t.datetime "sop_updated_at"
+    t.string   "lor_file_name"
+    t.string   "lor_content_type"
+    t.integer  "lor_file_size"
+    t.datetime "lor_updated_at"
   end
 
   add_index "student_applications", ["student_id"], name: "index_student_applications_on_student_id", unique: true

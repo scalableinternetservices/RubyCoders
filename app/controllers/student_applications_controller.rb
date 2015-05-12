@@ -79,7 +79,7 @@ class StudentApplicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_application_params
-      params.require(:student_application).permit(:student_id, :name, :phone, :email_id, :gpa, :address)
+      params.require(:student_application).permit(:student_id, :name, :phone, :email_id, :gpa, :address, :resume, :sop, :lor)
     end
 
     # check if an application already exists for current_student

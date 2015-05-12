@@ -32,13 +32,18 @@
 </tr>
 
 <tr>
-  <td><strong>Latitude:</strong></td>
-  <td><%= @student_application.latitude %></td>
+  <td><strong>RESUME:</strong></td>
+  <td><%= link_to 'Resume', @student_application.resume.url, target:"_blank" %></td>
 </tr>
 
 <tr>
-  <td><strong>Longitude:</strong></td>
-  <td><%= @student_application.longitude %></td>
+  <td><strong>Statement Of Purpose:</strong></td>
+  <td><%= link_to 'SOP', @student_application.sop.url, target:"_blank" %></td>
+</tr>
+
+<tr>
+  <td><strong>Letter Of Recommendation:</strong></td>
+  <td><%= link_to 'LOR', @student_application.lor.url, target:"_blank" %></td>
 </tr>
 
 </table>
