@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
 <h2> View Statistics </h2>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style type="text/css">
@@ -8,6 +5,7 @@
   body { height: 100%; margin: 0px; padding: 0px }
   #map_canvas { height: 100%, width: 100%; }
 </style>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
 <!-- Creating an array of the the names and lat long -->
 <% if show_map %>
@@ -37,13 +35,12 @@
 <script type="text/javascript"
     src="http://maps.google.com/maps/api/js?sensor=false">
 </script>
-</head>
-<body onload="initialize()">
+<body>
   <div id="map_canvas" style="width:40%; height:60%"></div>
 
   <script type="text/javascript">
     //document.write("Hello");
-    function initialize() {
+    
 
     //  document.write(array_loc);
       var map = new google.maps.Map(document.getElementById('map_canvas'), {
@@ -72,11 +69,16 @@
               }
             })(marker, j));
           }
-        }
+        
   </script>
-
-</body>
-</html>
+  <hr />
+  <b> Percentage of Applicants based on GPA </b>
+  <%= pie_chart StudentApplication.group(:gpa).count %>
+  <hr />
+  <b> Percentage of Applicants based on address </b>
+  <%= pie_chart StudentApplication.group(:address).count %>
+  <hr />
+  <hr />
 
 
 <% end %>
