@@ -57,7 +57,7 @@ class StudentApplicationsControllerTest < ActionController::TestCase
         delete :destroy, id: @student_application
       end
 
-      assert_redirected_to student_applications_path
+      assert_redirected_to welcome_index_path
     end
 
 end
