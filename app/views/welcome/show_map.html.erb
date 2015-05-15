@@ -72,10 +72,31 @@
     
   </script>
   <hr />
+  <b> Total Number of Applicants : </b>&nbsp;&nbsp;&nbsp;<%= StudentApplication.count %>
+  <% 
+    count_admitted = 0
+    count_rejected = 0
+    @app_status = AppStatus.all 
+    @app_status.each do |app_status|
+ %>
+  <% 
+    if app_status.status == true
+      count_admitted = count_admitted + 1
+    elsif app_status == false
+      count_rejected = count_rejected + 1
+    end
+  end
+  %>
+  <hr />
+  <b> Number of Admitted Students : </b>&nbsp;&nbsp;&nbsp;<%= count_admitted %>
+  <hr />
+  <b> Number of Rejected Students : </b>&nbsp;&nbsp;&nbsp;<%= count_rejected %>
+
+  <hr />
   <b> Percentage of Applicants based on GPA </b>
   <%= pie_chart StudentApplication.group(:gpa).count %>
   <hr />
-  <b> Percentage of Applicants based on address </b>
+  <b> Percentage of Applicants based on Address </b>
   <%= pie_chart StudentApplication.group(:address).count %>
   <hr />
   <hr />

@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150513064546) do
 
   create_table "app_statuses", force: :cascade do |t|
-    t.boolean  "status",                 default: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.boolean  "status"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "student_application_id"
     t.integer  "reviewer_id"
     t.string   "student_name"
@@ -48,9 +47,9 @@ ActiveRecord::Schema.define(version: 20150513064546) do
     t.string   "name"
     t.string   "phone"
     t.string   "email_id"
-    t.decimal  "gpa"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.decimal  "gpa",                 precision: 4, scale: 2
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.integer  "student_id"
     t.string   "address"
     t.float    "latitude"

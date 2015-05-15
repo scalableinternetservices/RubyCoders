@@ -77,8 +77,12 @@ class StudentApplicationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student_application
-      if StudentApplication.exists?(:student_id => current_student.id)
-        @student_application = StudentApplication.find_by student_id: current_student.id
+      if student_signed_in?
+        if StudentApplication.exists?(:student_id => current_student.id)
+          @student_application = StudentApplication.find_by student_id: current_student.id
+        else
+          @student_application = StudentApplication.find(params[:id])
+        end
       else
         @student_application = StudentApplication.find(params[:id])
       end

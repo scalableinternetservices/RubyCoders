@@ -5,7 +5,7 @@ class CreateStudentApplications < ActiveRecord::Migration
       t.string :name
       t.string :phone
       t.string :email_id
-      t.decimal :gpa
+      t.decimal :gpa, :precision => 4, :scale => 2
 
       t.timestamps null: false
     end
