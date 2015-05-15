@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508160452) do
+ActiveRecord::Schema.define(version: 20150513064546) do
+
+  create_table "app_statuses", force: :cascade do |t|
+    t.boolean  "status",                 default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "student_application_id"
+    t.integer  "reviewer_id"
+    t.string   "student_name"
+  end
+
+  add_index "app_statuses", ["reviewer_id"], name: "index_app_statuses_on_reviewer_id"
+  add_index "app_statuses", ["student_application_id"], name: "index_app_statuses_on_student_application_id"
 
   create_table "reviewers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

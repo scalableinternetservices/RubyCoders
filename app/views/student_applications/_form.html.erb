@@ -14,51 +14,47 @@
 <div class="panel panel-primary">
   <div class = "panel-body">
     <table class = "table">
+      
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :name %></strong></td>
+          <td><%= f.text_field :name %></td>
+        </div>
+      </tr>
 
- <!-- <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.text_field :student_id %>
-  </div> -->
-  <tr>
-    <div class="field">
-      <td><strong><%= f.label :name %></strong></td>
-      <td><%= f.text_field :name %></td>
-    </div>
-  </tr>
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :phone %></strong></td>
+          <td><%= f.text_field :phone %></td>
+        </div>
+      </tr>
 
-  <tr>
-    <div class="field">
-      <td><strong><%= f.label :phone %></strong></td>
-      <td><%= f.text_field :phone %></td>
-    </div>
-  </tr>
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :email_id %></strong></td>
+          <td><%= f.text_field :email_id %></td>
+        </div>
+      </tr>
 
-  <tr>
-    <div class="field">
-      <td><strong><%= f.label :email_id %></strong></td>
-      <td><%= f.text_field :email_id %></td>
-    </div>
-  </tr>
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :gpa %></strong></td>
+          <td><%= f.text_field :gpa %></td>
+        </div>
+      </tr>
 
-  <tr>
-    <div class="field">
-      <td><strong><%= f.label :gpa %></strong></td>
-      <td><%= f.text_field :gpa %></td>
-    </div>
-  </tr>
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :address %></strong></td>
+          <td><%= f.text_field :address %> <i>(City, State : eg. Los Angles, CA)</i></td>
+        </div>
+      </tr>
 
-  <tr>
-    <div class="field">
-      <td><strong><%= f.label :address %></strong></td>
-      <td><%= f.text_field :address %> <i>(City, State : eg. Los Angles, CA)</i></td>
-    </div>
-  </tr>
-
-</table>
-</div>
+    </table>
+  </div>
 </div>
 
 <center><div class="actions">
-  <%= f.submit %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
 </div></center>
 <% end %>

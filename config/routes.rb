@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get '/no_application' => 'welcome#no_application', :as => 'no_application_exists'
   get '/redirecting_show' => 'welcome#redirecting_show', :as => 'redirecting_for_show'
   get '/show_map' => 'welcome#show_map', :as => 'show_map'
+  post '/admitted' => 'student_applications#admitted', :as => 'admitted'
+  post '/rejected' => 'student_applications#rejected', :as => 'rejected'
+  #post '/review_admit' => 'student_applications#review_admit', :as => 'review_admit'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

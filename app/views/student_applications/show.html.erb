@@ -5,52 +5,60 @@
   <!--<div class="panel-title"><strong>Student Application<strong></div>-->
   <div class = "panel-body">
     <table class = "table">
-<% if student_signed_in? || reviewer_signed_in? %>
-<tr>
-  <td><strong>Name:</strong></td>
-  <td><%= @student_application.name %></td>
-</tr>
 
-<tr>
-  <td><strong>Phone:</strong></td>
-  <td><%= @student_application.phone %></td>
-</tr>
 
-<tr>
-  <td><strong>Email:</strong></td>
-  <td><%= @student_application.email_id %></td>
-</tr>
+      <% if student_signed_in? || reviewer_signed_in? %>
+      <tr>
+        <td><strong>Name:</strong></td>
+        <td><%= @student_application.name %></td>
+      </tr>
 
-<tr>
-  <td><strong>GPA:</strong></td>
-  <td><%= @student_application.gpa %></td>
-</tr>
+      <tr>
+        <td><strong>Phone:</strong></td>
+        <td><%= @student_application.phone %></td>
+      </tr>
 
-<tr>
-  <td><strong>Address:</strong></td>
-  <td><%= @student_application.address %></td>
-</tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td><%= @student_application.email_id %></td>
+      </tr>
 
-<tr>
-  <td><strong>Latitude:</strong></td>
-  <td><%= @student_application.latitude %></td>
-</tr>
+      <tr>
+        <td><strong>GPA:</strong></td>
+        <td><%= (@student_application.gpa).round(2) %></td>
+      </tr>
 
-<tr>
-  <td><strong>Longitude:</strong></td>
-  <td><%= @student_application.longitude %></td>
-</tr>
+      <tr>
+        <td><strong>Address:</strong></td>
+        <td><%= @student_application.address %></td>
+      </tr>
 
-</table>
+      <tr>
+        <td><strong>Latitude:</strong></td>
+        <td><%= @student_application.latitude %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Longitude:</strong></td>
+        <td><%= @student_application.longitude %></td>
+      </tr>
+
+    </table>
+  </div>
 </div>
-</div>
+<% end %>
 
-<div class = "btn-group" role="group">
-<%= link_to 'Edit', edit_student_application_path(@student_application), class:"btn btn-default" %>
-<%= link_to 'Back', welcome_index_path, class:"btn btn-default" %>
-<%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-default" %>
-</div>
+<% if student_signed_in? %>
+<center>
+  <%= link_to 'Edit', edit_student_application_path(@student_application), class:"btn btn-primary" %>
+  <%= link_to 'Back', welcome_index_path, class:"btn btn-primary" %>
+  <%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
+</center>
 
-<!--<% else %>
-  <li><%= link_to '<button type="button">Student Login</button>'.html_safe, new_student_session_path %></li> -->
+<% elsif reviewer_signed_in? %>
+<center>
+  <%= button_to 'Admit', {:controller => "student_applications", :action => "admitted", :student_application_id => @student_application.id, :reviewer_id => current_reviewer.id} , :method=>:post, :class => "btn btn-success"  %>
+  <%= button_to 'Reject', {:controller => "student_applications", :action => "rejected", :student_application_id => @student_application.id, :reviewer_id => current_reviewer.id} , :method=>:post, :class => "btn btn-danger"  %>
+  <%= link_to 'Back', welcome_index_path, class:"btn btn-primary" %>
+</center>
 <% end %>

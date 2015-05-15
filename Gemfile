@@ -7,6 +7,7 @@ gem 'devise'
 gem 'geocoder'
 gem 'gmaps4rails'
 
+gem 'foreigner', '~> 1.7.4'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

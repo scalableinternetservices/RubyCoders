@@ -15,8 +15,15 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<% if student_signed_in? %>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete%></li>
+						<li class="active"><%= link_to 'Student Sign Out', destroy_student_session_path, :method => :delete%></li>
 					</ul>
+
+					<%elsif reviewer_signed_in? %>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><%= link_to 'Reviewer Sign Out', destroy_reviewer_session_path, :method => :delete%></li>
+					</ul>
+
 
 					<% else %>
 

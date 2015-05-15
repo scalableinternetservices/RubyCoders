@@ -1,8 +1,8 @@
  <p id="notice"><%= notice %></p>
-<% if reviewer_signed_in? %>
-<h1>Listing Student Applications</h1>
+ <% if reviewer_signed_in? %>
+ <div class = "page-header"><h3>Listing Student Applications</h3></div>
 
-<table class = "table">
+ <table class = "table">
   <thead>
     <tr>
       <th>Student</th>
@@ -10,29 +10,35 @@
       <th>Phone</th>
       <th>Email</th>
       <th>Gpa</th>
+      <th>Address</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @student_applications.each do |student_application| %>
+    <% @app_status = AppStatus.all 
+    @app_status.each do |app_status|
+
+      if app_status.reviewer_id == nil %>
+
+      <% @student_applications.each do |student_application| %>
+      <% if app_status.student_application_id == student_application.id %>
       <tr>
+
         <td><%= student_application.student_id %></td>
         <td><%= student_application.name %></td>
         <td><%= student_application.phone %></td>
         <td><%= student_application.email_id %></td>
-        <td><%= student_application.gpa %></td>
+        <td><%= (student_application.gpa).round(2) %></td>
         <td><%= student_application.address %></td>
         <td><%= link_to 'Show', student_application %></td>
-        <!-- <td><%= link_to 'Edit', edit_student_application_path(student_application) %></td> -->
-        <!-- <td><%= link_to 'Destroy', student_application, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<!--
-<% else %>
-  <h2>Reviewer Zone - Student is not authorized to view this</h2>
-    <%= link_to 'Review Applications', new_reviewer_session_path, class:"btn btn-default" %>
-<% end %>
-<br> -->
+      <% end %>
+      <% end %>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <% end %>

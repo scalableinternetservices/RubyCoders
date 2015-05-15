@@ -2,11 +2,6 @@
 <% if student_signed_in? %>
 <%= render 'form' %>
 
-<div class = "btn-group" role="group">
-	<%= link_to 'Back', welcome_index_path, class:"btn btn-default" %>
-</div>
+<center><%= link_to 'Back', welcome_index_path, class:"btn btn-primary" %></center>
 
-<!--<% else %>
-	<li><%= link_to '<button type="button">Student Login</button>'.html_safe, new_student_session_path %></li>-->
-
-	<% end %>
+<% end %>

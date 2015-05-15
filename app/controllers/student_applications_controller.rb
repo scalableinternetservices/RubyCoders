@@ -1,4 +1,5 @@
 class StudentApplicationsController < ApplicationController
+  include StudentApplicationsHelper
   before_action :set_student_application, only: [:show, :edit, :update, :destroy]
   # Removing the next line because if not removed it always redirects to the student login page in case of reviewer too
   #before_action :authenticate_student!
@@ -17,9 +18,9 @@ class StudentApplicationsController < ApplicationController
   def new
     #@student_application = StudentApplication.new
     #@profile = current_user.build_profile(params[:id])
-      if student_signed_in?
-        @student_application = current_student.build_student_application
-      end
+    if student_signed_in?
+      @student_application = current_student.build_student_application
+    end
   end
 
   # GET /student_applications/1/edit
@@ -40,6 +41,7 @@ class StudentApplicationsController < ApplicationController
       if @student_application.save
         format.html { redirect_to @student_application, notice: 'Student application was successfully created.' }
         format.json { render :show, status: :created, location: @student_application }
+        AppStatus.create(student_application_id: @student_application.id, student_name: @student_application.name)
       else
         format.html { render :new }
         format.json { render json: @student_application.errors, status: :unprocessable_entity }
@@ -54,6 +56,7 @@ class StudentApplicationsController < ApplicationController
       if @student_application.update(student_application_params)
         format.html { redirect_to @student_application, notice: 'Student application was successfully updated.' }
         format.json { render :show, status: :ok, location: @student_application }
+        #AppStatus.create(student_application_id: "@student_application.id")
       else
         format.html { render :edit }
         format.json { render json: @student_application.errors, status: :unprocessable_entity }
@@ -91,4 +94,6 @@ class StudentApplicationsController < ApplicationController
       end
     end
     helper_method :check_application_existence
-end
+  end
+
+

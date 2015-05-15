@@ -9,37 +9,35 @@
     <% if student_signed_in? %>
     <% if no_application %>
     <!--  If student is logged in and have not created an application -->
-    <%= link_to 'New Application', new_student_application_path, class:"btn btn-default"%>
+    <%= link_to 'New Application', new_student_application_path, class:"btn btn-primary"%>
     <% else %>
     <!--  If student is logged in and already has an application -->
-    <%= link_to 'Retrieve Application', redirecting_for_show_path(@student_application), class:"btn btn-default"%></li>
-    <%= link_to 'View Statistics', show_map_path, class:"btn btn-default" %>
+    <%= link_to 'Retrieve Application', redirecting_for_show_path(@student_application), class:"btn btn-primary"%></li>
+    <%= link_to 'View Statistics', show_map_path, class:"btn btn-primary" %>
     <!--<li><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %></li>-->
     <% end %>
     <% elsif reviewer_signed_in? %>
-    <ul>
+    <%= link_to 'Applications ', student_applications_path, :method => :get, :action => :index, class:"btn btn-primary" %>
+    <%= link_to 'Admitted Applications', admitted_path, :method => :post, class:"btn btn-success" %>
+    <%= link_to 'Rejected Applications', rejected_path, :method => :post, class:"btn btn-danger" %>
+    <!--<%= link_to 'Reviewer Sign Out', destroy_reviewer_session_path, :method => :delete, class: "btn btn-primary" %>-->
+    <% else %>
 
-      <br />
-      <%= link_to 'Show All Applications ', student_applications_path, :method => :get, :action => :index, class:"btn btn-default" %>
-      <%= link_to 'Reviewer Sign Out', destroy_reviewer_session_path, :method => :delete, class: "btn btn-default" %>
-  </ul>
-  <% else %>
+    <%= link_to 'Apply Here', new_student_registration_path, class:"btn btn-primary" %>
+    <%= link_to 'Continue With Your Application', new_student_session_path, class:"btn btn-primary" %>
+    <%= link_to 'Review Applications', new_reviewer_session_path, class:"btn btn-primary" %>
+    <%= link_to 'View Statistics', show_map_path, class:"btn btn-primary" %>
 
-  <%= link_to 'Apply Here', new_student_registration_path, class:"btn btn-default" %>
-  <%= link_to 'Continue With Your Application', new_student_session_path, class:"btn btn-default" %>
-  <%= link_to 'Review Applications', new_reviewer_session_path, class:"btn btn-default" %>
-  <%= link_to 'View Statistics', show_map_path, class:"btn btn-default" %>
+    <% end %>
+    <br />
+    <br />
 
-  <% end %>
-  <br />
-  <br />
+    <h5>With more than 5,000 courses in 109 academic departments, UCLA offers 125 majors to help you define your academic path. And 70 percent of our undergraduate classes have 30 or fewer students, maximizing your personal engagement with our internationally renowned faculty.Our faculty includes Nobel Prize winners, Fulbright Scholars and a Fields Medal recipient. Classes are stimulating. Coursework is challenging.</h5>
 
-  <h5>With more than 5,000 courses in 109 academic departments, UCLA offers 125 majors to help you define your academic path. And 70 percent of our undergraduate classes have 30 or fewer students, maximizing your personal engagement with our internationally renowned faculty.Our faculty includes Nobel Prize winners, Fulbright Scholars and a Fields Medal recipient. Classes are stimulating. Coursework is challenging.</h5>
+    <h5>Our academic requirements are among the most rigorous in the nation. But once our students arrive, they have the full force of our resources behind them. There are countless opportunities for research, fellowships and internships and for connecting with major players in almost any field. Whether you want to change a life, a generation or the whole world, imagine what you can do with the resources only UCLA can provide.</h5>
 
-  <h5>Our academic requirements are among the most rigorous in the nation. But once our students arrive, they have the full force of our resources behind them. There are countless opportunities for research, fellowships and internships and for connecting with major players in almost any field. Whether you want to change a life, a generation or the whole world, imagine what you can do with the resources only UCLA can provide.</h5>
+    <h5>UCLA's graduate programs have a reputation for producing professionals, researchers and leaders who have a major impact on the world. With 40 programs ranked among the best in the nation, UCLA gives today's graduate students the resources and cutting-edge instruction they need to go out and leave their own indelible mark. And with the second largest city in the U.S. in our backyard, learning extends beyond the classroom. Engaging with the community, while being part of an academic system that is well connected and respected throughout the world, creates an educational experience that cannot be replicated anywhere else.</h5>
+    <br />
 
-  <h5>UCLA's graduate programs have a reputation for producing professionals, researchers and leaders who have a major impact on the world. With 40 programs ranked among the best in the nation, UCLA gives today's graduate students the resources and cutting-edge instruction they need to go out and leave their own indelible mark. And with the second largest city in the U.S. in our backyard, learning extends beyond the classroom. Engaging with the community, while being part of an academic system that is well connected and respected throughout the world, creates an educational experience that cannot be replicated anywhere else.</h5>
-  <br />
-
-</div>
+  </div>
 </div>

@@ -2,12 +2,10 @@
 <div class = "page-header"><h3>Editing Student Application</h3></div>
 
 <% if student_signed_in? %>
-<%= render 'form' %>
-
-<div class = "btn-group" role="group"> 
-	<%= link_to 'Show', @student_application, class:"btn btn-default" %> 
-	<%= link_to 'Back', welcome_index_path, class:"btn btn-default" %> 
-</div>
-
-<!--<li><%= link_to '<button type="button">Student Login</button>'.html_safe, new_student_session_path %></li>-->
+<%= render 'form' %> 
+<br>
+<center>
+	<%= link_to 'Show', @student_application, class:"btn btn-primary" %> 
+	<%= link_to 'Back', welcome_index_path, class:"btn btn-primary" %> 
+</center>
 <% end %>
