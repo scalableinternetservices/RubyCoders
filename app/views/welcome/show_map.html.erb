@@ -24,7 +24,7 @@
     //document.write(i);
   //  document.write("In script");
     //document.write('<%= student_application.address %>');
-    array_loc.push(['<%= student_application.address %>',<%= student_application.latitude %>,<%= student_application.longitude %>]);
+    array_loc.push(['<%= student_application.state %>',<%= student_application.latitude %>,<%= student_application.longitude %>]);
     //array_loc[i] = "Shraddha";
     //  document.write(array_loc);
     i=i+1;
@@ -97,7 +97,7 @@
   <%= pie_chart StudentApplication.group(:gpa).count %>
   <hr />
   <b> Percentage of Applicants based on Address </b>
-  <%= pie_chart StudentApplication.group(:address).count %>
+  <%= pie_chart StudentApplication.group(:state).count %>
   <hr />
   <hr />
   <% end %>

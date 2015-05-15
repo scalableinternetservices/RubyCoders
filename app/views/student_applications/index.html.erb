@@ -29,8 +29,13 @@
         <td><%= student_application.name %></td>
         <td><%= student_application.phone %></td>
         <td><%= student_application.email_id %></td>
-        <td><%= (student_application.gpa).round(2) %></td>
-        <td><%= student_application.address %></td>
+        <td><%= student_application.gpa %></td>
+        <td>
+          <%= student_application.address %><br />
+          <%= student_application.city %><br />
+          <%= student_application.state %><br />
+
+        </td>
         <td><%= link_to 'Show', student_application %></td>
 
       </tr>

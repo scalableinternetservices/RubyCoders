@@ -1,10 +1,14 @@
 one:
   student_id: 10
   name: Shrenik
+  dob: 2015-05-15
   phone: 1234567890
   email_id: shrrenik@shrenik.com
   gpa: 3.0
-  address: Statue of Liberty, NY
+  address: 512 Veteran Ave
+  city: Los Angeles
+  state: CA
+  country: USA
   latitude: 40.689249
   longitude: -74.0445
   resume_file_name: resume.pdf

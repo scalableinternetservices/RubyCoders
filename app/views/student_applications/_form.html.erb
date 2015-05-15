@@ -1,7 +1,7 @@
 <%= form_for(@student_application, :html => { :multipart => true }) do |f| %>
 <% if @student_application.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(@student_application.errors.count, "error") %> prohibited this student_application from being saved:</h2>
+  <h3><%= pluralize(@student_application.errors.count, "error") %> prohibited this student_application from being saved:</h3>
 
   <ul>
     <% @student_application.errors.full_messages.each do |message| %>
@@ -10,6 +10,14 @@
   </ul>
 </div>
 <% end %>
+
+<div class="alert alert-warning" role="alert">
+  <ul>
+    <li><i>Resume, SOP and LOR need to be PDF files</i></li>
+    <li><i>GPA needs to be between 3.0 - 4.0</i></li>
+  </ul>
+</div>
+
 
 <div class="panel panel-primary">
   <div class = "panel-body">
@@ -24,6 +32,13 @@
 
       <tr>
         <div class="field">
+          <td><strong><%= f.label "Date of Birth" %></strong></td>
+          <td><%= f.date_select :dob, :start_year => 1950 %></td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="field">
           <td><strong><%= f.label :phone %></strong></td>
           <td><%= f.text_field :phone %></td>
         </div>
@@ -31,7 +46,7 @@
 
       <tr>
         <div class="field">
-          <td><strong><%= f.label :email_id %></strong></td>
+          <td><strong><%= f.label "Email ID" %></strong></td>
           <td><%= f.text_field :email_id %></td>
         </div>
       </tr>
@@ -45,28 +60,52 @@
 
       <tr>
         <div class="field">
-          <td><strong><%= f.label :address %></strong></td>
-          <td><%= f.text_field :address %> <i>(City, State : eg. Los Angles, CA)</i></td>
+          <td><strong><%= f.label "Street Address" %></strong></td>
+          <td><%= f.text_field :address %></td>
+        </div>
+      </tr>
+
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :city %></strong></td>
+          <td><%= f.text_field :city %></td>
+        </div>
+      </tr>
+
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :state %></strong></td>
+          <td><%= f.text_field :state %><i>(Two letter initials : eg. CA)</i></td>
+        </div>
+      </tr>
+
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :country %></strong></td>
+          <td><%= f.text_field :country %></td>
         </div>
       </tr>
 
       <tr>
         <div class="field">
-          <td><strong><%= f.label :resume %>&nbsp;&nbsp;&nbsp;<i>(PDF)</i></strong></td>
+          <td><strong><%= f.label :resume %></strong></td>
           <td><%= f.file_field :resume %></td>
         </div>
       </tr>
 
       <tr>
         <div class="field">
-          <td><strong><%= f.label :Statement_Of_Purpose %>&nbsp;&nbsp;&nbsp;<i>(PDF)</i></strong></td>
+          <td><strong><%= f.label "Statement Of Purpose" %></strong></td>
           <td><%= f.file_field :sop %></td>
         </div>
       </tr>
 
       <tr>
         <div class="field">
-          <td><strong><%= f.label :Letter_Of_Recommendation %>&nbsp;&nbsp;&nbsp;<i>(PDF)</i></strong></td>
+          <td><strong><%= f.label "Letter Of Recommendation" %></strong></td>
           <td><%= f.file_field :lor %></td>
         </div>
       </tr>
