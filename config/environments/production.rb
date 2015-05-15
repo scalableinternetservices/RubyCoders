@@ -87,5 +87,4 @@ Rails.application.configure do
     :fog_directory => 'scalableinternetservices',
     :path => 'RubyCoders/'
   }
-}
 end
