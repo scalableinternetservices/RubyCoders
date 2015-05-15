@@ -4,7 +4,7 @@ class StudentApplication < ActiveRecord::Base
   after_validation :geocode, :if => :address_changed?
 
   # all fields must be filled
-  validates :name, :phone, :email_id, :gpa, :address, presence: true
+  validates :name, :phone, :email_id, :gpa, :address, :city, :state, :country, :dob, presence: true
   validates :resume, :sop, :lor, attachment_size: { less_than: 5.megabytes }
 
   # Phone should be a number and its length should be between 10 and 15 characters
@@ -16,6 +16,8 @@ class StudentApplication < ActiveRecord::Base
 
 # check if GPA lies in the correct range
   validates :gpa, :numericality => { less_than_or_equal_to:4.0, greater_than_or_equal_to: 2.5 }
+
+  #validates :dob, date: { before: Date.today }
 
 # Validate Address
 

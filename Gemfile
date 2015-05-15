@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'validates_timeliness', '~> 3.0.14'
+gem 'date_validator', '~> 0.7.1'
 gem 'chartkick'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'autoprefixer-rails'

@@ -22,7 +22,7 @@ class StudentApplicationsControllerTest < ActionController::TestCase
     sign_in students(:user1)
     file_dummy = fixture_file_upload('random.pdf','application/pdf')
     assert_difference('StudentApplication.count') do
-      post :create, student_application: { student_id: @student_application.student_id, email_id: 'abcd@ucla.edu', gpa: 3.0, name: 'abcd', phone: 9802957521, address:'Santa Clara, CA', resume_file_name: file_dummy, sop_file_name: file_dummy, lor_file_name: file_dummy }
+      post :create, student_application: { student_id: @student_application.student_id, email_id: 'abcd@ucla.edu', gpa: 3.0, name: 'abcd', phone: 9802957521, address:'512 Veteran Ave', city: 'Los Angeles', state: 'CA', country: 'USA', dob: '2015-05-15', resume_file_name: file_dummy, sop_file_name: file_dummy, lor_file_name: file_dummy }
       #post :create, student_application: { student_id: @student_application.student_id, email_id: 'abcd@ucla.edu', gpa: 3.0, name: 'abcd', phone: 9802957521, address:'Santa Clara, CA', resume_file_name: 'resume', resume_content_type: 'application/pdf',
       #resume_file_size: 2.megabytes, resume_updated_at: '2015-05-12 04:32:42', sop_file_name: 'sop', sop_content_type: 'application/pdf',
       #sop_file_size: 2.megabytes, sop_updated_at: '2015-05-12 04:32:42', lor_file_name: 'lor', lor_content_type: 'application/pdf',

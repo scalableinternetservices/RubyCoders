@@ -47,11 +47,15 @@ ActiveRecord::Schema.define(version: 20150513064546) do
     t.string   "name"
     t.string   "phone"
     t.string   "email_id"
-    t.decimal  "gpa",                 precision: 4, scale: 2
+    t.decimal  "gpa",                 precision: 2, scale: 1
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.integer  "student_id"
     t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.date     "dob"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "resume_file_name"

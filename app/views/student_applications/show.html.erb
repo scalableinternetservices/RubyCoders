@@ -1,6 +1,4 @@
 <div class = "page-header"><h3>Student Application</h3></div>
-
-
 <div class="panel panel-primary">
   <!--<div class="panel-title"><strong>Student Application<strong></div>-->
   <div class = "panel-body">
@@ -9,6 +7,11 @@
       <tr>
         <td><strong>Name:</strong></td>
         <td><%= @student_application.name %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Date of Birth:</strong></td>
+        <td><%= @student_application.dob %></td>
       </tr>
 
       <tr>
@@ -28,11 +31,14 @@
 
       <tr>
         <td><strong>Address:</strong></td>
-        <td><%= @student_application.address %></td>
+        <td><%= @student_application.address %><br />
+        <%= @student_application.city %>,
+        <%= @student_application.state %>,
+        <%= @student_application.country %></td>
       </tr>
 
       <tr>
-        <td><strong>RESUME:</strong></td>
+        <td><strong>Resume:</strong></td>
         <td><%= link_to 'Resume', @student_application.resume.url, target:"_blank" %></td>
       </tr>
 
@@ -45,7 +51,6 @@
         <td><strong>Letter Of Recommendation:</strong></td>
         <td><%= link_to 'LOR', @student_application.lor.url, target:"_blank" %></td>
       </tr>
-
     </table>
   </div>
 </div>
