@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'chartkick'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'autoprefixer-rails'
 gem 'devise'
+gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'geocoder'
 gem 'gmaps4rails'

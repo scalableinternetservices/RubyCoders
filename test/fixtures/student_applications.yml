@@ -1,5 +1,3 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   student_id: 10
   name: Shrenik
@@ -9,23 +7,6 @@ one:
   address: Statue of Liberty, NY
   latitude: 40.689249
   longitude: -74.0445
-
-two:
-  student_id: 11
-  name: Hetal
-  phone: 9878979870
-  email_id: het@ucla.edu
-  gpa: 3.2
-  address: Mumbai, MH
-  latitude: 19.0822507
-  longitude: 72.8812042
-
-three:
-  student_id: 12
-  name: Tara
-  phone: 1233211231
-  email_id: tara@ucla.edu
-  gpa: 3.2
-  address: Los Angeles, CA
-  latitude: 34.0204989
-  longitude: -118.4117325
+  resume_file_name: resume.pdf
+  sop_file_name: sop.pdf
+  lor_file_name: lor.pdf

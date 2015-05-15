@@ -5,7 +5,7 @@ class StudentApplication < ActiveRecord::Base
 
   # all fields must be filled
   validates :name, :phone, :email_id, :gpa, :address, presence: true
-
+  validates :resume, :sop, :lor, attachment_size: { less_than: 5.megabytes }
 
   # Phone should be a number and its length should be between 10 and 15 characters
   validates :phone,  :numericality => true,
@@ -19,5 +19,15 @@ class StudentApplication < ActiveRecord::Base
 
 # Validate Address
 
+# File Uploads
+
+has_attached_file :resume
+validates_attachment_content_type :resume, :content_type => %w(application/pdf)
+
+has_attached_file :sop
+validates_attachment_content_type :sop, :content_type => %w(application/pdf)
+
+has_attached_file :lor
+validates_attachment_content_type :lor, :content_type => %w(application/pdf)
 
 end

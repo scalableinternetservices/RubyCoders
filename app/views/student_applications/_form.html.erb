@@ -1,4 +1,4 @@
-<%= form_for(@student_application) do |f| %>
+<%= form_for(@student_application, :html => { :multipart => true }) do |f| %>
 <% if @student_application.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(@student_application.errors.count, "error") %> prohibited this student_application from being saved:</h2>
@@ -14,7 +14,7 @@
 <div class="panel panel-primary">
   <div class = "panel-body">
     <table class = "table">
-      
+
       <tr>
         <div class="field">
           <td><strong><%= f.label :name %></strong></td>
@@ -50,8 +50,29 @@
         </div>
       </tr>
 
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :resume %>&nbsp;&nbsp;&nbsp;<i>(PDF)</i></strong></td>
+          <td><%= f.file_field :resume %></td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :Statement_Of_Purpose %>&nbsp;&nbsp;&nbsp;<i>(PDF)</i></strong></td>
+          <td><%= f.file_field :sop %></td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="field">
+          <td><strong><%= f.label :Letter_Of_Recommendation %>&nbsp;&nbsp;&nbsp;<i>(PDF)</i></strong></td>
+          <td><%= f.file_field :lor %></td>
+        </div>
+      </tr>
     </table>
   </div>
+
 </div>
 
 <center><div class="actions">

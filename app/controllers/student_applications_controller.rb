@@ -69,7 +69,7 @@ class StudentApplicationsController < ApplicationController
   def destroy
     @student_application.destroy
     respond_to do |format|
-      format.html { redirect_to student_applications_url, notice: 'Student application was successfully destroyed.' }
+      format.html { redirect_to welcome_index_path, notice: 'Student application was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -77,12 +77,17 @@ class StudentApplicationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student_application
-      @student_application = StudentApplication.find(params[:id])
+      if StudentApplication.exists?(:student_id => current_student.id)
+        @student_application = StudentApplication.find_by student_id: current_student.id
+      else
+        @student_application = StudentApplication.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_application_params
-      params.require(:student_application).permit(:student_id, :name, :phone, :email_id, :gpa, :address)
+      #params.require(:student_application).permit(:student_id, :name, :phone, :email_id, :gpa, :address, :resume_file_name, :sop_file_name, :lor_file_name)
+      params.require(:student_application).permit(:student_id, :name, :phone, :email_id, :gpa, :address, :resume, :sop, :lor)
     end
 
     # check if an application already exists for current_student
