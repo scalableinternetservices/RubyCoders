@@ -3,4 +3,3 @@
 /db/*.sqlite3
 public/system/student_applications/*
 config/aws.yml
-config/s3.yml
