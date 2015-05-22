@@ -78,11 +78,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.paperclip_defaults = {
- :storage => :s3,
- :s3_credentials => {
-   :bucket => 'scalableinternetservices/RubyCoders/',
-   :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-   :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
- }
-}
+      :storage => :fog,
+      :fog_credentials => {
+        :use_iam_profile => true,
+        :provider => 'AWS',
+        :region => 'us-west-2'
+      },
+      :fog_directory => 'scalableinternetservices',
+      :path => 'RubyCoders/'
+    }
+
 end
