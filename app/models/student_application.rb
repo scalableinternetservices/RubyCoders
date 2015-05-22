@@ -23,13 +23,22 @@ class StudentApplication < ActiveRecord::Base
 
 # File Uploads
 
-has_attached_file :resume
+has_attached_file :resume:,
+                  :storage => :s3,
+                  :s3_credentials => "#{Rails.root}/config/s3.yml",
+                  :bucket => "scalableinternetservices/RubyCoders/"
 validates_attachment_content_type :resume, :content_type => %w(application/pdf)
 
-has_attached_file :sop
+has_attached_file :sop,
+                  :storage => :s3,
+                  :s3_credentials => "#{Rails.root}/config/s3.yml",
+                  :bucket => "scalableinternetservices/RubyCoders/"
 validates_attachment_content_type :sop, :content_type => %w(application/pdf)
 
-has_attached_file :lor
+has_attached_file :lor,
+                  :storage => :s3,
+                  :s3_credentials => "#{Rails.root}/config/s3.yml",
+                  :bucket => "scalableinternetservices/RubyCoders/"
 validates_attachment_content_type :lor, :content_type => %w(application/pdf)
 
 end
