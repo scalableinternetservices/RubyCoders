@@ -7,6 +7,8 @@ gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'paperclip'
+gem 'aws-sdk'
+gem 'fog'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'geocoder'
 gem 'gmaps4rails'
@@ -51,6 +53,5 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'aws-sdk'
-  gem 'fog'
+
 end
