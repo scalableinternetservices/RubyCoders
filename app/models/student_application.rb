@@ -23,13 +23,13 @@ class StudentApplication < ActiveRecord::Base
 
 # File Uploads
 
-has_attached_file :resume, :url  => "/resumes/:id/:filename"
+has_attached_file :resume
 validates_attachment_content_type :resume, :content_type => %w(application/pdf)
 
-has_attached_file :sop, :url  => "/sops/:id/:filename"
+has_attached_file :sop
 validates_attachment_content_type :sop, :content_type => %w(application/pdf)
 
-has_attached_file :lor, :url  => "/lors/:id/:filename"
+has_attached_file :lor
 validates_attachment_content_type :lor, :content_type => %w(application/pdf)
 
 end

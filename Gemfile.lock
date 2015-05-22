@@ -288,7 +288,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  aws-sdk (< 2.0)
+  aws-sdk
   bootstrap-sass (~> 3.2.0.2)
   byebug
   chartkick
