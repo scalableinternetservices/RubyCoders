@@ -44,9 +44,11 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => 'scalableinternetservices/RubyCoders/',
-      :s3_credentials => "#{Rails.root}/config/aws.yml",
-    }
+    :bucket => 'scalableinternetservices/RubyCoders/',
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    :s3_host_name => 's3-us-west-2.amazonaws.com'
   }
 
 end
