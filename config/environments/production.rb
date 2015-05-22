@@ -77,14 +77,10 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-   config.paperclip_defaults = {
-    :storage => :fog,
-    :fog_credentials => {
-      :use_iam_profile => true,
-      :provider => 'AWS',
-      :region => 'us-west-2'
-    },
-    :fog_directory => 'scalableinternetservices',
-    :path => 'RubyCoders/'
-  }
-end
+  config.paperclip_defaults = {
+ :storage => :s3,
+ :s3_host_name => 's3-us-west-2.amazonaws.com',
+ :s3_credentials => {
+   :bucket => 'scalableinternetservices/RubyCoders/'
+ }
+}end
