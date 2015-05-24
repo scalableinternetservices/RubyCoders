@@ -1,7 +1,7 @@
 class StudentApplication < ActiveRecord::Base
   belongs_to :Student
-  geocoded_by :address
-  after_validation :geocode, :if => :address_changed?
+  geocoded_by :city
+  after_validation :geocode, :if => :city_changed?
 
   # all fields must be filled
   validates :name, :phone, :email_id, :gpa, :address, :city, :state, :country, :dob, presence: true
