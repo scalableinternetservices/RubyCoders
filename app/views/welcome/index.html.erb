@@ -10,10 +10,11 @@
     <% if no_application %>
     <!--  If student is logged in and have not created an application -->
     <%= link_to 'New Application', new_student_application_path, class:"btn btn-primary"%>
+    <%= link_to 'View Statistics', show_map_path, class:"btn btn-primary", 'data-no-turbolink' => true %>
     <% else %>
     <!--  If student is logged in and already has an application -->
     <%= link_to 'Retrieve Application', redirecting_for_show_path(@student_application), class:"btn btn-primary"%></li>
-    <%= link_to 'View Statistics', show_map_path, class:"btn btn-primary" %>
+    <%= link_to 'View Statistics', show_map_path, class:"btn btn-primary", 'data-no-turbolink' => true %>
     <!--<li><%= link_to 'Sign Out', destroy_student_session_path, :method => :delete %></li>-->
     <% end %>
     <% elsif reviewer_signed_in? %>
@@ -26,7 +27,7 @@
     <%= link_to 'Apply Here', new_student_registration_path, class:"btn btn-primary" %>
     <%= link_to 'Continue With Your Application', new_student_session_path, class:"btn btn-primary" %>
     <%= link_to 'Review Applications', new_reviewer_session_path, class:"btn btn-primary" %>
-    <%= link_to 'View Statistics', show_map_path, class:"btn btn-primary" %>
+    <%= link_to 'View Statistics', show_map_path, class:"btn btn-primary", 'data-no-turbolink' => true %>
 
     <% end %>
     <br />
