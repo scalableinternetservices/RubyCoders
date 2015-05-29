@@ -63,7 +63,7 @@
       </http>
     </request>
     <!-- post to /communities to create a community.
-                        remember the url of the created community so we can delete it later -->
+               remember the url of the created community so we can delete it later -->
 
     <thinktime value="2" random="true"></thinktime>
 
@@ -94,11 +94,11 @@
     </setdynvars>
 <request subst="true">
      <http
-       url='/student_applications'
+       url='/student_applications/%%_created_student_id%%'
        version='1.1'
        method='POST'
        content_type='multipart/form-data; boundary=----FormBoundary'
-       contents='------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[name]"%%_nl%%%%_nl%%Application_name_%%_random_application_name%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(1i)]"%%_nl%%%%_nl%%2011%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(2i)]"%%_nl%%%%_nl%%5%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(3i)]"%%_nl%%%%_nl%%24%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[phone]"%%_nl%%%%_nl%%3107654321%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[email_id]"%%_nl%%%%_nl%%abc@gmail.com%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[gpa]"%%_nl%%%%_nl%%3.7%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[address]"%%_nl%%%%_nl%%Street_address%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[city]"%%_nl%%%%_nl%%Mumbai%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[state]"%%_nl%%%%_nl%%MH%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[country]"%%_nl%%%%_nl%%India%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[resume]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[sop]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[lor]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="commit"%%_nl%%%%_nl%%Submit%%_nl%%------FormBoundary--%%_nl%%%%_nl%%'>
+       contents='------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[name]"%%_nl%%%%_nl%%Application_name_%%_random_application_name%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(1i)]"2011------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(2i)]"5------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(3i)]"24------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[phone]"3107654321------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[email_id]"%%_nl%%%%_nl%%abc%40gmail.com------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[gpa]"3.7------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[address]"%%_nl%%%%_nl%%Street_address------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[city]"Mumbai------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[state]"MH------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[country]"India------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[resume]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[sop]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[lor]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="commit"%%_nl%%%%_nl%%Submit%%_nl%%------FormBoundary--%%_nl%%%%_nl%%'>
    </http>
    </request>
 
@@ -114,5 +114,3 @@
  </session>
 </sessions>
 </tsung>
-
-
