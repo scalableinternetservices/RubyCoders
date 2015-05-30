@@ -67,11 +67,12 @@ class StudentApplicationsController < ApplicationController
   # DELETE /student_applications/1
   # DELETE /student_applications/1.json
   def destroy
-    @student_application.destroy
-    respond_to do |format|
-      format.html { redirect_to welcome_index_path, notice: 'Student application was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    #if :delete_app_status
+      @student_application.destroy
+      respond_to do |format|
+        format.html { redirect_to welcome_index_path, notice: 'Student application was successfully destroyed.' }
+        format.json { head :no_content }
+      end
   end
 
   private
@@ -103,6 +104,7 @@ class StudentApplicationsController < ApplicationController
       end
     end
     helper_method :check_application_existence
+
   end
 
 

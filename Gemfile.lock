@@ -296,7 +296,7 @@ DEPENDENCIES
   date_validator (~> 0.7.1)
   devise
   fog
-  foreigner (~> 1.7.4)
+  foreigner
   geocoder
   gmaps4rails
   jbuilder (~> 2.0)

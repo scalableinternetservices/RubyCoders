@@ -17,4 +17,5 @@ module StudentApplicationsHelper
 		AppStatus.where(student_application_id: @app_id).limit(1).update_all(status: 0, reviewer_id: @reviewer_id)
 	end
 
+	
 end
