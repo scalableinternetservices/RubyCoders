@@ -12,7 +12,7 @@ module WelcomeHelper
 	def decision_made
 		@student_application = StudentApplication.find_by student_id: current_student.id
 
-		@app_status = AppStatus.find_by student_application_id: @student_application.id
+		@app_status = AppStatus.find_by student_application_id: @student_application
 		if @app_status.status != nil 
 			@decision_made = true
 		else
@@ -23,7 +23,7 @@ module WelcomeHelper
 	def decision
 		@student_application = StudentApplication.find_by student_id: current_student.id
 
-		@app_status = AppStatus.find_by student_application_id: @student_application.id
+		@app_status = AppStatus.find_by student_application_id: @student_application
 		if @app_status.status == 1 
 			@decision = true
 		else
