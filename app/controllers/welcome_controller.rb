@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
   helper_method :no_application
 
   def redirecting_show
-    redirect_to :controller => "student_applications", :action => "edit", :id => current_student.id
+    redirect_to :controller => "student_applications", :action => "show", :id => current_student.id
 
   end
   helper_method :redirecting_show

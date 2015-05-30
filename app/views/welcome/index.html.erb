@@ -1,6 +1,6 @@
-
-<p id="notice"><%= notice %></p>
-
+<% if notice!= nil %>
+<div class="alert alert-info" role="alert"><%= notice %></div>
+<% end %>
 <div class="panel panel-primary">
   <div class = "panel-body">
     <h2>Welcome to the University of California, Los Angeles</h2>
@@ -12,6 +12,14 @@
     <%= link_to 'New Application', new_student_application_path, class:"btn btn-primary"%>
     <%= link_to 'View Statistics', show_map_path, class:"btn btn-primary", 'data-no-turbolink' => true %>
     <% else %>
+
+    <% if decision_made %>
+    <% if decision %>
+    <div class="alert alert-success" role="alert">Congratulations! You have been admitted.</div>
+    <% else %>
+    <div class="alert alert-danger" role="alert">Sorry! We have decided to consider other applicants. Good luck!</div>
+    <% end %>
+    <% end %>
     <!--  If student is logged in and already has an application -->
     <%= link_to 'Retrieve Application', redirecting_for_show_path(@student_application), class:"btn btn-primary"%></li>
     <%= link_to 'View Statistics', show_map_path, class:"btn btn-primary", 'data-no-turbolink' => true %>

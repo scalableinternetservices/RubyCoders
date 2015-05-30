@@ -58,11 +58,15 @@
 <% end %>
 
 <% if student_signed_in? %>
+<% if decision_made %>
+<center><%= link_to 'Back', welcome_index_path, class:"btn btn-primary" %></center>
+<% else %>
 <center>
   <%= link_to 'Edit', edit_student_application_path(@student_application), class:"btn btn-primary" %>
   <%= link_to 'Back', welcome_index_path, class:"btn btn-primary" %>
   <%= link_to 'Destroy', @student_application, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
 </center>
+<% end %>
 
 <% elsif reviewer_signed_in? %>
 <center>

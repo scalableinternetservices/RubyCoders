@@ -1,5 +1,6 @@
 class StudentApplication < ActiveRecord::Base
   belongs_to :Student
+  has_one :app_status, :dependent => :destroy
   geocoded_by :city
   after_validation :geocode, :if => :city_changed?
 
