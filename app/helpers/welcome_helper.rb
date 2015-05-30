@@ -24,7 +24,7 @@ module WelcomeHelper
 		@student_application = StudentApplication.find_by student_id: current_student.id
 
 		@app_status = AppStatus.find_by student_application_id: @student_application.id
-		if @app_status.status == true 
+		if @app_status.status == 1 
 			@decision = true
 		else
 			@decision = false
