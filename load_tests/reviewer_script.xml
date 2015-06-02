@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-52-25-252-229.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-52-24-53-181.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -29,58 +29,270 @@
   </options>
 
   <sessions>
-    <session name="http-example" probability="100" type="ts_http">
+
+    <!-- Admit Students -->
+
+    <session name="http-example" probability="50" type="ts_http">
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
-          <thinktime value="2" random="true"></thinktime>
+      <thinktime value="2" random="true"></thinktime>
 
-    <!-- visit the Reviewer sign in form  -->
+
+      <request>
+        <http url='/students/sign_in' version='1.1' method='GET'></http>
+      </request>
+      <request>
+        <http url='/students/sign_up' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is filling out new student form -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- create a random number to make a unique email for each student -->
+      <setdynvars sourcetype="random_number" start="1000" end="9999999">
+        <var name="random_student_email" />
+      </setdynvars>
+      <request subst="true">
+        <http
+          url='/students'
+          version='1.1'
+          method='POST'
+          contents='student%5Bemail%5D=student_name_%%_random_student_email%%%40gmail.com&amp;student%5Bpassword%5D=helloworlde&amp;student%5Bpassword_confirmation%5D=helloworlde&amp;commit=Sign+up'>
+
+        </http>
+      </request>
+
+      <!-- Go the new application page -->
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- Creating new application -->
+      <request>
+        <http url="/student_applications/new" version='1.1' method='GET'>
+        </http>
+      </request>
+
+      <!-- Submitting a new student applictaion-->
+
+      <setdynvars sourcetype="eval"
+        code='fun({Pid,DynVars})-> [[13, 10]] end.'>
+        <var name="nl" />
+      </setdynvars>
+      <setdynvars sourcetype="eval"
+       code='fun({Pid,DynVars})->
+       {ok, Bin} = file:read_file("sample.pdf"),
+       Bin
+       end.'>
+       <var name="attached_file" />
+     </setdynvars>
+
+     <setdynvars sourcetype="random_number" start="1000" end="9999999">
+       <var name="random_application_name" />
+     </setdynvars>
+
+     <request subst="true">
+      <dyn_variable name="created_application_url" re="[Ll]ocation: (http://.*)\r"/>
+      <dyn_variable name="created_application_id" re="[Ll]ocation: http://.*/student_applications/(.*)\r"/>
+      <http
+        url='/student_applications'
+        version='1.1'
+        method='POST'
+        content_type='multipart/form-data; boundary=----FormBoundary'
+        contents='------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[name]"%%_nl%%%%_nl%%Application_name_%%_random_application_name%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(1i)]"%%_nl%%%%_nl%%2011%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(2i)]"%%_nl%%%%_nl%%5%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(3i)]"%%_nl%%%%_nl%%24%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[phone]"%%_nl%%%%_nl%%3107654321%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[email_id]"%%_nl%%%%_nl%%abc@gmail.com%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[gpa]"%%_nl%%%%_nl%%3.7%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[address]"%%_nl%%%%_nl%%Street_address%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[city]"%%_nl%%%%_nl%%Mumbai%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[state]"%%_nl%%%%_nl%%MH%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[country]"%%_nl%%%%_nl%%India%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[resume]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[sop]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[lor]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="commit"%%_nl%%%%_nl%%Submit%%_nl%%------FormBoundary--%%_nl%%%%_nl%%'>
+      </http>
+    </request>
+
+    <!-- Student Sign out -->
+
+    <request>
+      <http url='/students/sign_out' version='1.1' method='DELETE'></http>
+    </request>
+
+    <!-- visit the Reviewer sign up form  -->
     <request>
       <http url='/reviewers/sign_up' version='1.1' method='GET'></http>
     </request>
 
-    <!-- wait for up to 2 seconds, user is filling out new community form -->
+    <!-- wait for up to 2 seconds, user is filling out new reviewerform -->
     <thinktime value="2" random="true"></thinktime>
 
-    <!-- create a random number to make a unique community name -->
+    <!-- create a random number to make a unique reviewer name -->
     <setdynvars sourcetype="random_number" start="1000" end="9999999">
       <var name="random_reviewer_email" />
     </setdynvars>
+
+    <request subst="true">
+     <http
+      url='/reviewers'
+      version='1.1'
+      method='POST'
+      contents='reviewer%5Bemail%5D=reviewer_name_%%_random_reviewer_email%%%40gmail.com&amp;reviewer%5Bpassword%5D=helloworlde&amp;reviewer%5Bpassword_confirmation%5D=helloworlde&amp;commit=Sign+up'>
+    </http>
+  </request>
+
+
+  <!-- View all applications -->
+  <request subst="true">
+    <http url="/student_applications" version='1.1' method='GET'>
+    </http>
+  </request>
+
+  <!-- View a single application to admit/reject -->
+  <request subst="true">
+    <http url="/student_applications/%%_created_application_id%%" version='1.1' method='GET'>
+    </http>
+  </request>
+
+  <thinktime value="4" random="true"></thinktime>
+
+  <!-- Admit a student -->
+  <request subst="true">
+    <http url='/admitted?reviewer_id=1&amp;student_application_id=%%_created_application_id%%' version='1.1' method='POST'>
+    </http>
+  </request>
+
+  <!-- Printing Dynamic variables -->
+  <thinktime value="10" random="true"></thinktime>
+  <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+    io:format([126, $p, 126, $n, 126, $n],[lists:keydelete(attached_file, 1, DynVars)]),
+    ok end.">
+    <var name="dump" />
+  </setdynvars>
+
+</session>
+
+
+<!-- Reject Students -->
+
+<session name="http-example" probability="50" type="ts_http">
+  <request>
+    <http url='/' version='1.1' method='GET'></http>
+  </request>
+  <thinktime value="2" random="true"></thinktime>
+
+
+  <request>
+    <http url='/students/sign_in' version='1.1' method='GET'></http>
+  </request>
+  <request>
+    <http url='/students/sign_up' version='1.1' method='GET'></http>
+  </request>
+
+  <!-- wait for up to 2 seconds, user is filling out new student form -->
+  <thinktime value="2" random="true"></thinktime>
+
+  <!-- create a random number to make a unique email for each student -->
+  <setdynvars sourcetype="random_number" start="1000" end="9999999">
+    <var name="random_student_email" />
+  </setdynvars>
+  <request subst="true">
+    <http
+      url='/students'
+      version='1.1'
+      method='POST'
+      contents='student%5Bemail%5D=student_name_%%_random_student_email%%%40gmail.com&amp;student%5Bpassword%5D=helloworlde&amp;student%5Bpassword_confirmation%5D=helloworlde&amp;commit=Sign+up'>
+
+    </http>
+  </request>
+
+  <!-- Go the new application page -->
+
+  <thinktime value="2" random="true"></thinktime>
+
+  <!-- Creating new application -->
+  <request>
+    <http url="/student_applications/new" version='1.1' method='GET'>
+    </http>
+  </request>
+
+  <!-- Submitting a new student applictaion-->
+
+  <setdynvars sourcetype="eval"
+    code='fun({Pid,DynVars})-> [[13, 10]] end.'>
+    <var name="nl" />
+  </setdynvars>
+  <setdynvars sourcetype="eval"
+   code='fun({Pid,DynVars})->
+   {ok, Bin} = file:read_file("sample.pdf"),
+   Bin
+   end.'>
+   <var name="attached_file" />
+ </setdynvars>
+
+ <setdynvars sourcetype="random_number" start="1000" end="9999999">
+   <var name="random_application_name" />
+ </setdynvars>
+
+ <request subst="true">
+  <dyn_variable name="created_application_url1" re="[Ll]ocation: (http://.*)\r"/>
+  <dyn_variable name="created_application_id1" re="[Ll]ocation: http://.*/student_applications/(.*)\r"/>
+  <http
+    url='/student_applications'
+    version='1.1'
+    method='POST'
+    content_type='multipart/form-data; boundary=----FormBoundary'
+    contents='------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[name]"%%_nl%%%%_nl%%Application_name_%%_random_application_name%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(1i)]"%%_nl%%%%_nl%%2011%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(2i)]"%%_nl%%%%_nl%%5%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[dob(3i)]"%%_nl%%%%_nl%%24%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[phone]"%%_nl%%%%_nl%%3107654321%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[email_id]"%%_nl%%%%_nl%%abc@gmail.com%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[gpa]"%%_nl%%%%_nl%%3.7%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[address]"%%_nl%%%%_nl%%Street_address%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[city]"%%_nl%%%%_nl%%Mumbai%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[state]"%%_nl%%%%_nl%%MH%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[country]"%%_nl%%%%_nl%%India%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[resume]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[sop]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="student_application[lor]"; filename="sample.pdf"%%_nl%%Content-Type: application/pdf%%_nl%%%%_nl%%%%_attached_file%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="commit"%%_nl%%%%_nl%%Submit%%_nl%%------FormBoundary--%%_nl%%%%_nl%%'>
+  </http>
+</request>
+
+<!-- Student Sign out -->
+
+<request>
+  <http url='/students/sign_out' version='1.1' method='DELETE'></http>
+</request>
+
+<!-- visit the Reviewer sign up form  -->
+<request>
+  <http url='/reviewers/sign_up' version='1.1' method='GET'></http>
+</request>
+
+<!-- wait for up to 2 seconds, user is filling out new reviewerform -->
+<thinktime value="2" random="true"></thinktime>
+
+<!-- create a random number to make a unique reviewer name -->
+<setdynvars sourcetype="random_number" start="1000" end="9999999">
+  <var name="random_reviewer_email" />
+</setdynvars>
+
 <request subst="true">
-       <dyn_variable name="created_reviewer_url" re="[Ll]ocation: (http://.*)\r"/>
-      <dyn_variable name="created_reviewer_id" re="[Ll]ocation: http://.*/reviewers/(.*)\r"/>
-              <http
-        url='/reviewers'
-        version='1.1'
-        method='POST'
-        contents='reviewer%5Bemail%5D=reviewer_name_%%_random_reviewer_email%%%40gmail.com&amp;reviewer%5Bpassword%5D=helloworlde&amp;reviewer%5Bpassword_confirmation%5D=helloworlde&amp;commit=Sign+up'>
-      </http>
-    </request>
-    <!-- post to /communities to create a community.
-               remember the url of the created community so we can delete it later -->
-
-    <thinktime value="2" random="true"></thinktime>
-
-    <!-- Creating new application -->
-    <request>
-        <http url="/student_applications" version='1.1' method='POST'>
-
-        </http>
-    </request>
-
-    <!-- Submitting a new student applictaion-->
+ <http
+  url='/reviewers'
+  version='1.1'
+  method='POST'
+  contents='reviewer%5Bemail%5D=reviewer_name_%%_random_reviewer_email%%%40gmail.com&amp;reviewer%5Bpassword%5D=helloworlde&amp;reviewer%5Bpassword_confirmation%5D=helloworlde&amp;commit=Sign+up'>
+</http>
+</request>
 
 
+<!-- View all applications -->
+<request subst="true">
+  <http url="/student_applications" version='1.1' method='GET'>
+  </http>
+</request>
 
+<!-- View a single application to admit/reject -->
+<request subst="true">
+  <http url="/student_applications/%%_created_application_id1%%" version='1.1' method='GET'>
+  </http>
+</request>
 
-      <thinktime value="10" random="true"></thinktime>
+<thinktime value="4" random="true"></thinktime>
+
+<!-- Reject a student -->
+<request subst="true">
+  <http url='/rejected?reviewer_id=1&amp;student_application_id=%%_created_application_id1%%' version='1.1' method='POST'>
+  </http>
+</request>
+
+<!-- Printing Dynamic variables -->
+<thinktime value="10" random="true"></thinktime>
 <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
-                io:format([126, $p, 126, $n, 126, $n],[lists:keydelete(attached_file, 1, DynVars)]),
-     ok end.">
-     <var name="dump" />
-   </setdynvars>
+  io:format([126, $p, 126, $n, 126, $n],[lists:keydelete(attached_file, 1, DynVars)]),
+  ok end.">
+  <var name="dump" />
+</setdynvars>
 
- </session>
+</session>
 </sessions>
 </tsung>
