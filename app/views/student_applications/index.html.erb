@@ -1,6 +1,6 @@
  <p id="notice"><%= notice %></p>
  <% if reviewer_signed_in? %>
- <div class = "page-header"><h3>Listing Student Applications</h3></div>
+ <div class = "page-header"><h3> Student Applications</h3></div>
 
  <table class = "table">
   <thead>
@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @app_status = AppStatus.all 
+    <% @app_status = AppStatus.all
     @app_status.each do |app_status|
 
       if app_status.reviewer_id == nil %>
@@ -44,6 +44,8 @@
       <% end %>
       <% end %>
     </tbody>
+    <center><div><%= will_paginate @student_applications %></div></center>
   </table>
-  <% end %>
 
+
+  <% end %>
