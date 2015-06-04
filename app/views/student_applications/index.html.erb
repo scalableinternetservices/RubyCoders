@@ -2,6 +2,7 @@
  <% if reviewer_signed_in? %>
  <div class = "page-header"><h3>Listing Student Applications</h3></div>
 
+<% cache(cache_key_for_studentapplication_table) do %>
  <table class = "table">
   <thead>
     <tr>
@@ -21,8 +22,12 @@
 
       if app_status.reviewer_id == nil %>
 
+
       <% @student_applications.each do |student_application| %>
+
       <% if app_status.student_application_id == student_application.id %>
+
+      <% cache(cache_key_for_studentapplication_row(student_application)) do %>
       <tr>
 
         <td><%= student_application.id %></td>
@@ -43,7 +48,9 @@
       <% end %>
       <% end %>
       <% end %>
+      <% end %>
+      
     </tbody>
   </table>
   <% end %>
-
+<% end %>
