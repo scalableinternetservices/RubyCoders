@@ -6,7 +6,7 @@ class StudentApplicationsController < ApplicationController
   # GET /student_applications
   # GET /student_applications.json
   def index
-    @student_applications = StudentApplication.all
+    @student_applications = StudentApplication.all.paginate(page: params[:page], per_page: 5).order('id ASC')
   end
 
   # GET /student_applications/1
@@ -106,5 +106,3 @@ class StudentApplicationsController < ApplicationController
     helper_method :check_application_existence
 
   end
-
-

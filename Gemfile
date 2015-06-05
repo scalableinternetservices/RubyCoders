@@ -13,6 +13,7 @@ gem 'fog'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'will_paginate', '~> 3.0.6'
 
 gem 'foreigner'
 gem 'rails', '4.2.0'
