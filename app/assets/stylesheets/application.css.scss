@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -22,4 +22,6 @@
     bottom: 0;
     width: 100%;
     }
-
+.panel-body{
+  padding-left: 20px;
+}

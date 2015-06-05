@@ -1,4 +1,5 @@
 <div class = "page-header"><center><h2>View Statistics</h2></center></div>
+
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style type="text/css">
   html { height: 100%; }
@@ -33,12 +34,15 @@
   src="http://maps.google.com/maps/api/js?sensor=false">
 </script>
 <body>
-
   <div id="map_canvas" style="width:55%; height:60%; margin: 0 auto 0 auto"></div>
+  <center><b><i> *****Markers show the locations of all the applicants***** </i></b></center>
+  <br /><br />
+  <div class="panel panel-primary">
+    <div class = "panel-body">
 
   <script type="text/javascript">
     //document.write("Hello");
-    
+
 
     //  document.write(array_loc);
     var map = new google.maps.Map(document.getElementById('map_canvas'), {
@@ -67,18 +71,19 @@
         }
       })(marker, j));
     }
+
   </script>
-  <center><b><i> *****Markers show the locations of all the applicants***** </i></b></center>
+
   <hr />
 
   <b> Total Number of Applicants : </b>&nbsp;&nbsp;&nbsp;<%= StudentApplication.count %>
-  <% 
+  <%
   count_admitted = 0
   count_rejected = 0
-  @app_status = AppStatus.all 
+  @app_status = AppStatus.all
   @app_status.each do |app_status|
    %>
-   <% 
+   <%
    if app_status.status == true
     count_admitted = count_admitted + 1
   elsif app_status.status == false
@@ -101,3 +106,4 @@ end
 <hr />
 <hr />
 </div>
+</div></div>
