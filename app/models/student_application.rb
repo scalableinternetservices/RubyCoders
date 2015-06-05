@@ -33,4 +33,8 @@ validates_attachment_content_type :sop, :content_type => %w(application/pdf)
 has_attached_file :lor
 validates_attachment_content_type :lor, :content_type => %w(application/pdf)
 
+def self.all_cached
+  Rails.cache.fetch('StudentApplication.all') { all }
+end
+
 end
