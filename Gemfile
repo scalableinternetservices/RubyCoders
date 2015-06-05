@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'validates_timeliness', '~> 3.0.14'
 gem 'date_validator', '~> 0.7.1'
 gem 'chartkick'
@@ -10,6 +9,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'fog'
+gem 'will_paginate', '~> 3.0.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'geocoder'
 gem 'gmaps4rails'

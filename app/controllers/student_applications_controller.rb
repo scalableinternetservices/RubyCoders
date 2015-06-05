@@ -1,17 +1,21 @@
 class StudentApplicationsController < ApplicationController
   include StudentApplicationsHelper
+  before_filter :set_cache_control_headers, only: [:index, :show]
   before_action :set_student_application, only: [:show, :edit, :update, :destroy]
+  etag { current_student.try :id }
   # Removing the next line because if not removed it always redirects to the student login page in case of reviewer too
   #before_action :authenticate_student!
   # GET /student_applications
   # GET /student_applications.json
   def index
-    @student_applications = StudentApplication.all
+    @student_applications = StudentApplication.all.paginate(page: params[:page], per_page: 5).order('id ASC')
   end
 
   # GET /student_applications/1
   # GET /student_applications/1.json
   def show
+    #fresh_when([@student_application, @student_application.name, @student_application.dob, @student_application.phone, @student_application.email_id, @student_application.gpa, @student_application.address, @student_application.city, @student_application.state, @student_application.country, @student_application.resume, @student_application.sop, @student_application.lor])
+    fresh_when(@student_application)
   end
 
   # GET /student_applications/new
@@ -106,5 +110,3 @@ class StudentApplicationsController < ApplicationController
     helper_method :check_application_existence
 
   end
-
-
